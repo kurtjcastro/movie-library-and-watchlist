@@ -3,7 +3,7 @@
 // @ts-nocheck
 require_once "base.php";
 
-$ucid = "mt85"; // <-- set your ucid
+$ucid = "kc784"; // <-- set your ucid
 
 // Don't edit the arrays below, they are used to test your code
 $array1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -29,6 +29,19 @@ function printOdds($arr, $arrayNumber)
     // Start Solution Edits
     // set solution to $output_result variable
    
+    // kc784 | 2/18
+    // iterate through each element + check if divisible by 2
+    $firstOdd = true;
+    foreach ($arr as $num) {
+        if ($num % 2 != 0) {
+            if (!$firstOdd) {
+                $output_result .+ ", ";
+            }
+            $output_result .+ $num;
+            $firstOdd = false;
+        }
+    }
+
     // End Solution Edits
     printScenario1Output($output_result);
     echo "</div>";
