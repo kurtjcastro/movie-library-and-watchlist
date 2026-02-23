@@ -3,7 +3,7 @@
 // @ts-nocheck
 require_once "base.php";
 
-$ucid = "mt85"; // <-- set your ucid
+$ucid = "kc784"; // <-- set your ucid
 
 // Don't edit the arrays below, they are used to test your code
 $array1 = [42, -17, 89, -256, 1024, -4096, 50000, -123456];
@@ -28,7 +28,27 @@ function bePositive($arr, $arrayNumber)
 
     $output = array_fill(0, count($arr), null); // Initialize output array
     // Start Solution Edits
-    
+    // kc784 | 2/23
+    // iterate through each elements in array and check value type
+    // convert values to absolute value
+    // check initial typing and cast it back to original type
+
+    foreach ($arr as $i => $value) {
+        $positive = abs((float)$value);     // sets values to abs value + stores to positive
+        if (is_int($value)) {
+            $output[$i] = (int)$positive;   // sets int to positive
+        } elseif (is_float($value)) {
+            $output[$i] = (float)$positive;  // sets float to positive
+        } elseif (is_string($value)) {
+            if (strpos($value, ".") !== false) {
+                $output[$i] = (string)$positive;    // 
+            } else {
+                $output[$i] = (string)((int)$positive);
+            }
+        } else {
+            $output[$i] = (string)((int)$positive); 
+        }
+    }
 
     // End Solution Edits
     printScenario3Output($output);

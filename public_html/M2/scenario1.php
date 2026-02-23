@@ -32,10 +32,10 @@ function printOdds($arr, $arrayNumber)
     // kc784 | 2/18
     // iterate through each element + check if divisible by 2
     $firstOdd = true;
-    foreach ($arr as $num) {
-        if ($num % 2 != 0) {
+    foreach ($arr as $num) {    
+        if ($num % 2 != 0) {       // iterates through all elements + checks if divisble by 2
             if (!$firstOdd) {
-                $output_result .+ ", ";
+                $output_result .+ ", ";     // separates output by commas
             }
             $output_result .+ $num;
             $firstOdd = false;

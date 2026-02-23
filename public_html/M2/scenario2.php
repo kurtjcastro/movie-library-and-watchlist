@@ -3,7 +3,7 @@
 // @ts-nocheck
 require_once "base.php";
 
-$ucid = "mt85"; // <-- set your ucid
+$ucid = "kc784"; // <-- set your ucid
 
 // Don't edit the arrays below, they are used to test your code
 $array1 = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6];
@@ -35,9 +35,9 @@ function sumValues($arr, $arrayNumber)
     // check elements of array and sum all values then reformat
 
     for ($i = 0; $i < count($arr); $i++) {
-        $total += $arr[$i];
+        $total += $arr[$i];     // sum of all array elements
     }
-    $formattedTotal = number_format($total, 2, ".", "");
+    $formattedTotal = number_format($total, 2, ".", "");    // formatting by 2 dp
 
 
     // Solve Challenge 2 here: Format to 2 decimal places
