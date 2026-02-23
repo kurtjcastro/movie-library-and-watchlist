@@ -37,7 +37,7 @@ function printOdds($arr, $arrayNumber)
             if (!$firstOdd) {
                 $output_result .= ", ";     // separates output by commas
             }
-            $output_result .+ $num;
+            $output_result .= $num;
             $firstOdd = false;
         }
     }
