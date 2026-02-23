@@ -46,7 +46,63 @@ function transformText($arr, $arrayNumber) {
         // if too short then run too short
         // 3 middle chars
 
-        
+        $cleaned = "";
+        for ($i = 0; $i < strlen($text); $i++) {
+            $ch = $text[$i];
+            $isLower = ($ch >= "a" && $ch <= "z");  // checks for lowercase 
+            $isUpper = ($ch >= "A" && $ch <= "Z"); // checks for uppercase
+            $isNum = ($ch >= "0" && $ch <= "9"); // checks for num
+            $isSpace = ($ch === " ");   //checks for space
+
+            if ($isLower || $isUpper || $isNum || $isSpace) {
+                $cleaned .= $ch;    // stores all non alphanum to cleaned
+            }
+        }
+        $cleaned = trim ($cleaned); // holder for cleaning extra spaces from start and end
+        $normal = "";
+        $spaceBefore = false;   // boolean holder for checking spaces before element
+
+        for ($i = 0; $i < strlen($cleaned); $i++) {
+            $ch = $cleaned[$i];
+
+            if ($ch === " ") {      // if current char is space
+                if (!$spaceBefore) {
+                    $normal .= $ch;     // adds a space
+                    $spaceBefore = true;    // last added char is space
+                }
+            } else {
+                $normal .= $ch;     // if not space then add it
+                $spaceBefore = false;
+            }
+        }
+        $placeholderForModifiedPhrase = ucwords (strtolower($normal));  // lowercase for everything
+        $phrase = $placeholderForModifiedPhrase;   
+        $len = strlen($phrase);     // length of modified phrase
+
+        if ($len < 3) {     // checks if word is long enough
+            $placeholderForMiddleCharacters = "Not enough characters";
+        } else {
+            $mid = intdiv($len, 2);     // middle index
+            $start = $mid - 1;  // first letter of middle 3 characters
+
+            if ($start < 1) {
+                $start = 1;
+            }
+
+            if ($start + 2 >= $len) {   // tries to keep start index in middle of phrase instead of edges
+                $start = $len - 3;
+            }
+            if ($start < 0) {
+                $placeholderForMiddleCharacters = "Not enough characters";
+            } else {
+                $middlePart = substr($phrase, $start, 3);   // takes 3 chars
+                if ($middlePart === "") {
+                    $placeholderForMiddleCharacters = "Not enough characters";
+                } else {
+                    $placeholderForMiddleCharacters = $middlePart;  // saves middle characters result
+                }
+            }
+        }
         // End Solution Edits
     
         printScenario4Transformations($index, $placeholderForModifiedPhrase, $placeholderForMiddleCharacters);
