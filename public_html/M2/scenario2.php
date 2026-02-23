@@ -31,6 +31,13 @@ function sumValues($arr, $arrayNumber)
     $total = 0;
     // Start Solution Edits
     // Solve Challenge 1 here: Sum all values
+    // kc784 | 2/23
+    // check elements of array and sum all values then reformat
+
+    for ($i = 0; $i < count($arr); $i++) {
+        $total += $arr[$i];
+    }
+    $formattedTotal = number_format($total, 2, ".", "");
 
 
     // Solve Challenge 2 here: Format to 2 decimal places
