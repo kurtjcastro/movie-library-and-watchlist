@@ -36,6 +36,17 @@ function transformText($arr, $arrayNumber) {
         // Step 2: Add/commit your outline of comments (required for full credit)
         // Step 3: Add code to solve the problem (add/commit as needed)
 
+        // kc784 | 2/23
+        // build new string only keeping letters, nums, spaces (no punctuation) 
+        // make vals positive
+        // trim extra spaces from beginning and end
+        // keep one space 
+        // convert to title
+        // len of modified phrase
+        // if too short then run too short
+        // 3 middle chars
+
+        
         // End Solution Edits
     
         printScenario4Transformations($index, $placeholderForModifiedPhrase, $placeholderForMiddleCharacters);
