@@ -35,7 +35,7 @@ function printOdds($arr, $arrayNumber)
     foreach ($arr as $num) {    
         if ($num % 2 != 0) {       // iterates through all elements + checks if divisble by 2
             if (!$firstOdd) {
-                $output_result .+ ", ";     // separates output by commas
+                $output_result .= ", ";     // separates output by commas
             }
             $output_result .+ $num;
             $firstOdd = false;
