@@ -103,9 +103,32 @@ Requirements:
        dynamic arrow 
     */
 
-   
+   const leftSidebar = document.getElementById("left-sidebar"); // for left sidebar
+   const rightSidebar = document.getElementById("right-sidebar"); // for right sidebar
+   const leftButton = leftSidebar.querySelector("button"); // for left button
+   const rightButton = rightSidebar.querySelector("button"); // for right button
+
+   leftButton.addEventListener("click", function() { // only runs when left button is clicked
+       leftSidebar.classList.toggle("collapsed"); // add/remove collapsed
+       leftButton.textContent = leftSidebar.classList.contains("collapsed") ? "<" : ">"; // changes left arrow
+    });
+
+   rightButton.addEventListener("click", function() { // only runs when right button is clicked
+       rightSidebar.classList.toggle("collapsed"); // add/remove collapsed
+       rightButton.textContent = rightSidebar.classList.contains("collapsed") ? "<" : ">"; // changes right arrow
+    });
 </script>
 
 <style>
     /* You're free to make whatever edits you need here, just don't override anything in the styles.css */
+    /* kc784 | March 7
+    nav + header on top
+    container fills rest of empty
+    side bars on left and right
+    side bars to 15% 
+    shrinks side bars when collapsed
+    main uses rest of space
+    */
+
+    
 </style>
