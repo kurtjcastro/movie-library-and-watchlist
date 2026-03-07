@@ -130,5 +130,34 @@ Requirements:
     main uses rest of space
     */
 
-    
+    body.challenge2 {
+        height: 100vh; /* fills screen height */
+        display: grid; /* grid layout for page */
+        grid-template-rows: auto auto 1fr; /* navigation, header, container */
+        overflow: hidden; /* stops page scrolling */
+    }
+    body.challenge2.container {
+        display: flex; /* puts container children in row */
+        min-height: 0; /* children are sized correctly */
+    }
+    body.challenge2 #left-sidebar, /* target left sidebar */
+    body.challenge2 #right-sidebar {
+        width: 15%; /* side bars are 15% wide */
+        flex: 0 0 15%; /* keeps side bar width fixed */
+        overflow: hidden; /* hides content when collapsed */
+    }
+    body.challenge2 #left-sidebar.collapsed, /* collapsed left side bar */
+    body.challenge2 #right-sidebar.collapsed { /* collapsed right side bar */
+        width: 40px; /* make collapsed side bar smaller */
+        flex-basis: 40px; /* keep collapsed width */
+    }
+    body.challenge2 #left-sidebar.collapsed ul, /* left list when collapsed */
+    body.challenge2 #right-sidebar.collapsed ul { /* right list when collapsed */
+        display: none; /* hides side bar list */
+    }
+    body.challenge2 main.content { /* middle content area */
+    flex: 1; /* takes remaining width */
+    min-width: 0; /* stops overflow */
+    overflow-y: auto; /* allows scrolling */
+    }
 </style>
