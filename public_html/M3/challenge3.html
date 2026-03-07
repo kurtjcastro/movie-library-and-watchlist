@@ -84,9 +84,45 @@ Requirements:
        loop around at end 
     */
 
-   
+   const buttons = document.querySelectorAll("body.challenge3 > nav button"); // back and forward buttons
+   const backButton = buttons[0]; // stores back button
+   const forwardButton = buttons[1]; // stores forward button
+
+   const carouselContainer = document.querySelector(".carousel-container"); // moving carousel row
+   const panels = document.querySelectorAll(".panel"); // all panels
+
+   let currentIndex = 0; // starts at panel 0
+
+   function showPanel(index) { // show a panel
+       if (index < 0) {// checks if user goes before first panel
+            currentIndex = panels.length -1; // goes to last panel
+       } else if (index >= panels.length) { // check if user goes after last panel 
+            currentIndex = 0; // goes back to first panel
+       } else {
+            currentIndex = index; // save new index
+       }
+       carouselContainer.style.transform = 'translateX(-${currentIndex * 100}%)'; // slides to panel
+   }
+
+   backButton.addEventListener("click", function () { // runs when back button is pressed
+        showPanel(currentIndex - 1); // go to previous panel
+   });
+   forwardButton.addEventListener("click", function () { // runs when forward button is pressed
+        showPanel(currentIndex + 1); // go to next panel
+   });
+   showPanel(0); // show the first panel page load
 </script>
 
 <style>
     /* You're free to make whatever edits you need here, just don't override anything in the styles.css */
+    /* kc784 | March 7
+       keeps navigation and header at the top 
+       centers buttons
+       carousel fills rest of page
+       show one panel at a time
+       centers panel content
+    */
+
+    
+
 </style>
