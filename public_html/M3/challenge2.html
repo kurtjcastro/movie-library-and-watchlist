@@ -115,7 +115,7 @@ Requirements:
 
    rightButton.addEventListener("click", function() { // only runs when right button is clicked
        rightSidebar.classList.toggle("collapsed"); // add/remove collapsed
-       rightButton.textContent = rightSidebar.classList.contains("collapsed") ? "<" : ">"; // changes right arrow
+       rightButton.textContent = rightSidebar.classList.contains("collapsed") ? ">" : "<"; // changes right arrow
     });
 </script>
 
@@ -136,7 +136,7 @@ Requirements:
         grid-template-rows: auto auto 1fr; /* navigation, header, container */
         overflow: hidden; /* stops page scrolling */
     }
-    body.challenge2.container {
+    body.challenge2 .container {
         display: flex; /* puts container children in row */
         min-height: 0; /* children are sized correctly */
     }
