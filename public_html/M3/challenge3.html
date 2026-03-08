@@ -126,26 +126,28 @@ Requirements:
     body.challenge3 {
         height: 100vh; /* page fills screen height */
         display: grid; /* use grid layout */
-        grid-template-rows: auto auto auto 1fr; /* navigation, header, button navigation, carousel */
+        grid-template-rows: auto auto auto minmax(0, 1fr); /* navigation, header, button navigation, carousel */
         overflow: hidden; /* stop page scroll */
     }
     body.challenge3 > nav:last-of-type {
-        display: flex; /* buttons are in a row */
-        justify-content: center; /* centers buttons */
-        gap: 10px; /* adds space between buttons */
+        text-align: center; /* centers buttons */
     }
     body.challenge3 .carousel {
         width: 100%; /* makes carousel full width */
         min-height: 0; /* fits inside grid */
-        overflow: hidden /* hides other panels */
+        height: 100%; /* fills height */
+        display: flex; /* height to fill */
+        overflow: hidden; /* hides other panels */
     }
     body.challenge3 .carousel-container {
-        display:flex; /* panels are side by side */
-        height: 100%; /* fills height */
+        display: flex; /* panels are side by side */
+        flex: 1; /* fills whole carousel */
+        min-height: 0;
         transition: transform 0.3s ease; /* animated slide */
     }
     body.challenge3 .panel {
-        flex: 0 0 100%; /* each panel is full width */
+        flex: 0 0 100%; /* panels take full carousel width */
+        height: 100%; /* fills height */
         display: flex; /* flex for centering */
         justify-content: center; /* center horizontally */ 
         align-items: center; /* centers vertically */
