@@ -96,11 +96,11 @@ if (empty($diff)) {
             <!-- kc784 | 3/24 -->
             <div>
                 <label for="task">Task</label>
-                <input type="text" id="task" name="task" maxlength="128" required /> <!-- maxlength limit varchar to 128 limit -->
+                <input type="text" id="task" name="task" /> <!-- maxlength limit varchar to 128 limit -->
             </div>
             <div>
                 <label for="due">Due Date</label>
-                <input type="date" id="due" name="due" required /> <!-- outputs proper date format year, month, day -->
+                <input type="date" id="due" name="due" /> <!-- outputs proper date format year, month, day -->
             </div>
             <div>
                 <label for="assigned">Assigned</label>
