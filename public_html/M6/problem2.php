@@ -37,7 +37,18 @@ function processCars($cars) {
     // 3. calc age by substracting car year from current year
     // 4. determine isClassic if age is >= classic age
     // 5. add original properties w/ age and isClassic to $processedCars
-    
+
+    $currentYear = (int)date("Y"); // curret year is taken as int
+
+    foreach ($cars as $car) { // iterates over cars
+        $age = $currentYear - $car["year"]; // calculates age of car
+        $isClassic = $age >= $classic_age; // only true if age of car >= classic car age 
+
+        $processedCars[] = array_merge($car, [ // takes all original car properties
+            "age" => $age, // adds calculated age
+            "isClassic" => $isClassic // adds classic bool
+        ]);
+    }
     // End edits
     echo "<pre>" . var_export($processedCars, true) . "</pre>";
     

@@ -51,6 +51,7 @@ function joinArrays($users, $activities) {
     $joined = []; // result array
     // Start edits
     
+    
 
     // End edits
     echo "<pre>" . var_export($joined, true) . "</pre>";
