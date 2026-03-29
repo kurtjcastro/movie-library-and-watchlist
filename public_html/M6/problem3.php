@@ -51,12 +51,20 @@ function joinArrays($users, $activities) {
     $joined = []; // result array
     // Start edits
     
+    // kc784 3/29
     // plan
     // 1. loop through each user
     // 2. loop through $activities to find matching userId
     // 3. merge user + activity into 1 array if id matches
     // 4. put merged result to $joined
 
+    foreach ($users as $user) { // iterates for each user
+        foreach ($activities as $activity) { // looks for match in each activity
+            if ($user["userId"] == $activity["userId"]) { // joins if userId matches
+                $joined[] = array_merge($user, $activity); // combines user + activity as one entry
+            }    
+        }
+    }
     // End edits
     echo "<pre>" . var_export($joined, true) . "</pre>";
 }

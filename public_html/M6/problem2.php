@@ -31,6 +31,7 @@ function processCars($cars) {
     $classic_age = 25; // don't change this value
     // Start edits
    
+    // kc784 | 3/29
     // plan
     // 1. get current year w/ date()
     // 2. iterate through each car
