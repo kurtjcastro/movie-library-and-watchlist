@@ -51,7 +51,11 @@ function joinArrays($users, $activities) {
     $joined = []; // result array
     // Start edits
     
-    
+    // plan
+    // 1. loop through each user
+    // 2. loop through $activities to find matching userId
+    // 3. merge user + activity into 1 array if id matches
+    // 4. put merged result to $joined
 
     // End edits
     echo "<pre>" . var_export($joined, true) . "</pre>";
