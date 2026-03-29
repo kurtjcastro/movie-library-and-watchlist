@@ -31,6 +31,13 @@ function processCars($cars) {
     $classic_age = 25; // don't change this value
     // Start edits
    
+    // plan
+    // 1. get current year w/ date()
+    // 2. iterate through each car
+    // 3. calc age by substracting car year from current year
+    // 4. determine isClassic if age is >= classic age
+    // 5. add original properties w/ age and isClassic to $processedCars
+    
     // End edits
     echo "<pre>" . var_export($processedCars, true) . "</pre>";
     
