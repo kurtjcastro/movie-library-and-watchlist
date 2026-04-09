@@ -1,15 +1,20 @@
 <?php
+// kc784 | 4/9 
+// handles registration, validation, user creation
 require(__DIR__ . "/../../partials/nav.php");
 ?>
 <h3>Register</h3>
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
+        <input id="email" type="email" name="email" required 
+            value="<?php se($_POST, 'email', ''); ?>" />
     </div>
     <div>
         <label for="username">Username</label>
-        <input type="text" name="username" required maxlength="30" />
+        <input type="text" name="username" required maxlength="30"
+            value="<?php se($_POST, 'username', ''); ?>" />
+
     </div>
     <div>
         <label for="pw">Password</label>
@@ -26,7 +31,31 @@ require(__DIR__ . "/../../partials/nav.php");
         //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
         //ensure it returns false for an error and true for success
 
-        return true;
+        // kc784 | 4/9
+        // handling registration, validation, user creation
+        let username = form.username.value;
+        let email = form.email.value;
+        let password = form.password.value;
+        let confirm = form.confirm.value;
+        let isValid = true;
+
+        if (!/^[a-z0-9_-]{3,30}$/.test(username)) {
+            flash("Username must be lowercase, alphanumeric, and - or _", "warning");
+            isValid = false;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            flash("Invalid email format", "warning");
+            isValid = false;
+        }
+        if (password.length < 8) {
+            flash("Password must be at least 8 characters", "warning");
+            isValid = false;
+        }
+        if (password !== confirm) {
+            flash("Passwords do not match", "warning");
+            isValid = false;
+        }
+        return isValid;
     }
 </script>
 <?php

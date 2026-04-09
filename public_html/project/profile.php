@@ -1,4 +1,6 @@
 <?php
+// kc784 | 4/9
+// handles profiles, view + editing of username, email, password
 require_once(__DIR__ . "/../../partials/nav.php");
 if (!is_logged_in()) {
     die(header("Location: login.php"));
@@ -181,6 +183,23 @@ if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["confirmPassw
         let isValid = true;
         //TODO add other client side validation....
 
+        // kc784 | 4/9
+        // handles profiles, view + editing of username, email, password
+        let username = form.username.value;
+        let email = form.email.value;
+
+        if (!/^[a-z0-9_-]{3,30}$/.test(username)) {
+            flash("Username must be lowercase, alphanumeric, and - or _", "warning");
+            isValid = false;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            flash("Invalid email format", "warning");
+            isValid = false;
+        }
+        if (pw.length > 0 && pw.length < 8) {
+            flash("New password must be at least 8 characters", "warning");
+            isValid = false;
+        }
         //example of using flash via javascript
         //find the flash container, create a new element, appendChild
         // NOTE: we'll extract the flash code to a function later

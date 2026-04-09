@@ -1,12 +1,15 @@
 <?php
 ob_start();// Temp fix to resolve output buffer issues that send the header() early that cause issues with the header("Location:...") below
+// kc784 | 4/9
+// handles login, session creation, roles
 require(__DIR__ . "/../../partials/nav.php");
 ?>
 <h3>Login</h3>
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email or Username</label>
-        <input id="email" type="text" name="email" required />
+        <input id="email" type="text" name="email" required
+            value="<?php se($_POST, 'email', ''); ?>" />
     </div>
     <div>
         <label for="pw">Password</label>
@@ -19,7 +22,28 @@ require(__DIR__ . "/../../partials/nav.php");
         //TODO 1: implement JavaScript validation (you'll do this on your own towards the end of Milestone1)
         //ensure it returns false for an error and true for success
 
-        return true;
+        // kc784 | 4/9
+        // handles login, session creation, roles
+        let login = form.email.value;
+        let password = form.password.value;
+        let isValid = true;
+
+        if (login.includes("@")) {
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(login)) {
+                flash("Invalid email format", "warning");
+                isValid = false;
+            }
+        } else {
+            if (!/^[a-z0-9_-]{3,30}$/.test(login)) {
+                flash("Invalid username format", "warning");
+                isValid = false;
+            }
+        }
+        if (password.length < 8) {
+            flash("Password must be at least 8 characters", "warning");
+            isValid = false;
+        }
+        return isValid;
     }
 </script>
 <?php
