@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // kc784 | 4/9 
 // handles registration, validation, user creation
 require(__DIR__ . "/../../partials/nav.php");
