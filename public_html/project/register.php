@@ -61,6 +61,8 @@ require(__DIR__ . "/../../partials/nav.php");
 </script>
 <?php
 //TODO 2: add PHP Code
+// kc784 | 4/9
+// handles registration, validation, user creation
 if (isset($_POST["email"], $_POST["password"], $_POST["confirm"], $_POST["username"])) {
 
     $email = se($_POST, "email", "", false);
