@@ -48,6 +48,8 @@ require(__DIR__ . "/../../partials/nav.php");
 </script>
 <?php
 //TODO 2: add PHP Code
+// kc784 | 4/9
+// handles login, session creation, roles
 if (isset($_POST["email"], $_POST["password"])) {
     // still leveraging the property as "email", but it can be a username
     $email = se($_POST, "email", "", false);

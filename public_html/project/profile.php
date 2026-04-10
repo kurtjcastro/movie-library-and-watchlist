@@ -10,6 +10,8 @@ if (!is_logged_in()) {
 $user_id = get_user_id(); // get id from session
 $email = get_user_email(); // get email from session
 $username = get_username(); // get username from session
+
+// kc784 | 4/9
 // handle email/username update
 if (isset($_POST["email"], $_POST["username"])) {
     $new_email = se($_POST, "email", null, false);
@@ -85,6 +87,7 @@ if (isset($_POST["email"], $_POST["username"])) {
         }
     }
 }
+// kc784 | 4/9
 // handle password update
 if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["confirmPassword"])) {
 
@@ -148,6 +151,7 @@ if (isset($_POST["currentPassword"], $_POST["newPassword"], $_POST["confirmPassw
         }
     }
 }
+// kc784 | 4/9
 ?>
 <h3>Profile</h3>
 <form method="POST" onsubmit="return validate(this);">
