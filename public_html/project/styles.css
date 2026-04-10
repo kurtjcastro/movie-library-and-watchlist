@@ -1,0 +1,102 @@
+/* Moved from flash.php*/
+/* Define basic colors for standard bootstrap alert classes, scoped to .container#flash */
+/* This will be later moved into a separate CSS file in a future lesson */
+/* And one we add bootstrap, we will use the bootstrap classes instead of these */
+
+.container#flash {
+
+    .alert {
+        padding: 1rem;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+    }
+
+    .alert-primary {
+        background-color: #cfe2ff;
+        color: #084298;
+    }
+
+    .alert-secondary {
+        background-color: #e2e3e5;
+        color: #41464b;
+    }
+
+    .alert-success {
+        background-color: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #842029;
+    }
+
+    .alert-warning {
+        background-color: #fff3cd;
+        color: #664d03;
+    }
+
+    .alert-info {
+        background-color: #cff4fc;
+        color: #055160;
+    }
+
+    .alert-light {
+        background-color: #fefefe;
+        color: #636464;
+    }
+
+    .alert-dark {
+        background-color: #212529;
+        color: #fff;
+    }
+}
+/* Update the below for Milestone 1 requirements */
+nav li {
+    display: inline;
+    background-color: #5875F2;
+}
+
+nav li a {
+    color: #ffffff;
+    padding: .25rem;
+}
+nav li a:hover {
+    color: #353956;
+}
+
+label{
+    border:#ffffff dashed 1.5px;
+    background-color: #353956;
+    padding: 2.5px;
+}
+input {
+    border-radius: 4px;
+    padding: .25rem;
+}
+input:hover{
+    border:#ffffff;
+    transform: rotateZ(10deg);
+}
+form,h3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: #5875F2;
+    color: #ffffff;
+}
+input[type="submit"]:hover {
+    transform: scale(1.15)
+}
+input[type="submit"]:active {
+     transform: scale(.75)
+}
