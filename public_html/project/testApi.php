@@ -4,9 +4,17 @@ ob_start();
 // test file for MoviesDatabase API verification of connection + response
 require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
-$apiKey = $_ENV["MOVIES_API_KEY"];
 
-$url = "https://moviesdatabase.p.rapidapi.com/titles?list=most_pop_movies&limit=5";
+$ini = @parse_ini_file(__DIR__ . "/../../lib/.env");
+// $apiKey = $ini["MOVIES_API_KEY"] ?? ""; 
+
+if ($ini && isset($ini["MOVIES_API_KEY"])) {
+    $apiKey = $ini["MOVIES_API_KEY"];
+} else {
+    $apiKey = getenv("MOVIES_API_KEY");
+}
+
+$url = "https://moviesdatabase.p.rapidapi.com/titles?list=top_rated_english_250&limit=5";
 
 $curl = curl_init();
 curl_setopt_array($curl, [
@@ -22,6 +30,8 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 
 if ($err) {
+    echo "cURL Error: " . $err;
+} else {
     $data = json_decode($response, true);
     echo "<pre>";
     print_r($data);
