@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // kc784 | 4/13
 // test file for MoviesDatabase API verification of connection + response
 require(__DIR__ . "/../../partials/nav.php");
