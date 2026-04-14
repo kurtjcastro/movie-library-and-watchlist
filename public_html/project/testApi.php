@@ -5,7 +5,13 @@ require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 
 $ini = @parse_ini_file(__DIR__ . "/../../lib/.env");
-$apiKey = $ini["MOVIES_API_KEY"] ?? "";
+// $apiKey = $ini["MOVIES_API_KEY"] ?? "";
+
+if ($ini && isset($ini["MOVIES_API_KEY"])) {
+    $apiKey = $ini["MOVIES_API_KEY"];
+} else {
+    $apiKey = getenv("MOVIES_API_KEY");
+}
 
 $url = "https://moviesdatabase.p.rapidapi.com/titles?list=top_rated_english_250&limit=5";
 
