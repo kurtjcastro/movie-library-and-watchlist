@@ -19,6 +19,7 @@ is_logged_in(true);
     </div>
     <div>
         <label for="release_year">Release Year</label>
+        <input type="number" id="release_year" name="release_year" min="1888" max="2030" value="<?php se($_POST, 'release_year'); ?>" />
     </div>
     <div> 
         <label for="image_url">Image URL</label>
@@ -57,7 +58,7 @@ is_logged_in(true);
             flash("Release year must be between 1888 and 2030", "warning");
             isValid = false;
         }
-        if (imageUrl && !imageUrl.startWith("http")) { // url has to start with http
+        if (imageUrl && !imageUrl.startsWith("http")) { // url has to start with http
             flash("Image URL must be a valid URL", "warning");
             isValid = false;
         }
@@ -68,3 +69,63 @@ is_logged_in(true);
 
 <?php 
 // kc784 | 4/17
+// server side validation + database addition for manual inserts
+// take POST data, validate fields, insert into movies table
+
+if (isset($_POST["title"])) { // runs if a form was submitted
+    $title = se($_POST, "title", "", false); // grabs title from POST
+    $release_year = se($_POST, "release_year", "", false); // grabs release year
+    $image_url = se($_POST, "image_url", "", false); // grabs image url
+    $title_type = se($_POST, "title_type", "", false); // grabs title type
+
+    $hasError = false; // track for validation fails
+
+    // validates title
+    if (empty(trim($title))) {
+        flash("Title is required", "danger");
+        $hasError = true;
+    }
+    // validates release year 
+    if (!empty($release_year)) {
+        $release_year = (int)$release_year; // casts to int
+        if ($release_year < 1888 || $release_year > 2030) {
+            flash("Release year must be between 1888 and 2030", "danger");
+            $hasError = true;
+        }
+    } else {
+        $release_year = null; // set null if empty
+    }
+    // validate image url 
+    if (!empty($image_url) && !filter_var($image_url, FILTER_VALIDATE_URL)) {
+        flash("Invalid image URL", "danger");
+        $hasError = true;
+    }
+    // validate title type
+    $valid_types = ["movie", "tvSeries", "short", "tvMovie", "tvSpecial", ""];
+    if (!in_array($title_type, $valid_types)) {
+        flash("Invalid title type", "danger");
+        $hasError = true;
+    }
+
+    if (!$hasError) { // only inserts if all has been validated 
+        $db = getDB(); // gets database connection
+        $stmt = $db->prepare( // prepares insert statement 
+            "INSERT INTO Movies (title, release_year, image_url, title_type, is_api)
+            VALUES (:title, :release_year, :image_url, :title_type, 0)" // 0 means manually created
+        ); 
+        try {
+            $stmt->execute([
+                ":title" => $title,
+                ":release_year" => $release_year,
+                ":image_url" => !empty($image_url) ? $image_url : null, // stores null if empty 
+                ":title_type" => !empty($title_type) ? $title_type : null // stores null if empty also
+            ]);
+            flash("Movie added successfully!", "success"); // insertion success message
+        } catch (Exception $e) {
+            flash("Error adding movie", "danger"); // user friendly generic error 
+            error_log("Create movie error " . var_export($e, true)); // logs technical error
+        }
+    }
+}
+?>
+<?php require (__DIR__ . "/../../partials/flash.php"); ?> 
