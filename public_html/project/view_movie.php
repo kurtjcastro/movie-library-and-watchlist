@@ -12,7 +12,7 @@ $id = se($_GET, "id", -1, false); // grab id from url or default -1
 
 if ($id < 1) { // check id validity
     flash("Invalid movie id", "danger");
-    header("Location: list_novies.php"); // redirect back to list
+    header("Location: list_movies.php"); // redirect back to list
     die();
 }
 $db = getDB(); 
@@ -27,7 +27,7 @@ if (!$movie) { // if movie not found
 }
 ?>
 
-<h3><?php se($movie, 'title'); ?></h3> <!-- title as heading -->$_COOKIE
+<h3><?php se($movie, 'title'); ?></h3> <!-- title as heading -->
 
 <div>
     <p><strong>Release Year:</strong> <?php echo se($movie, 'release_year', 'N/A', false); ?></p>
