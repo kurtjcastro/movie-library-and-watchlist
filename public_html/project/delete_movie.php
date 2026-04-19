@@ -7,3 +7,35 @@ require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 
 $id = se($_GET, "id", -1, false); // grabs id from url
+
+if ($id < 1) { // check if id valid
+    flash("Invalid movie id", "danger"); 
+    header("Location: list_movies.php"); // redirect to list
+    die();
+}
+
+$db = getDB();
+$stmt = $db->prepare("SELECT * FROM Movies WHERE id = :id"); // check if movie exists
+$stmt->execute([":id" => $id]);
+$movie = $stmt->fetch();
+
+if (!$movie) { // movies not found
+    flash("Movie not found", "danger");
+    header("Location: list_movies.php");
+    die();
+}
+
+// delete movies
+$stmt = $db->prepare("DELETE FROM Movies WHERE id = :id");
+try {
+    $stmt->execute([":id" => $id]);
+    flash("Movie deleted successfully", "success"); // delete success message
+} catch (Exception $e) {
+    flash("Error deleting movie", "danger"); // generic user friendly message
+    error_log("Delete movie error: " . var_export($e, true)); // logs technical error message
+}
+
+// redirect to list
+header("Location: list_movies.php");
+die();
+?>
