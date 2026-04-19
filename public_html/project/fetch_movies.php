@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // runs only on form submit
 
     try {
         $result = get($url, "MOVIES_API_KEY", $data, true, "moviesdatabase.p.rapidapi.com");
-        $response = json_decode($result[$response], true); // json to array
+        $response = json_decode($result["response"], true); // json to array
 
         if (!isset($response["results"]) || empty($response["results"])) {
             flash("No results from API", "warning");
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // runs only on form submit
                 // inserts new movie
                 $stmt = $db->prepare(
                     "INSERT INTO Movies (api_id, title, release_year, image_url, title_type, is_api)
-                    VALUS (:api_id, :title, :release_year, :image_url, :title_type, 1)"
+                    VALUES (:api_id, :title, :release_year, :image_url, :title_type, 1)"
                 );
                 try {
                     $stmt->execute([
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // runs only on form submit
                     ]);
                     $inserted++;
                 } catch (Exception $e) {
-                    error_log("Error inserting movie $api_id: " var_export($e, true));
+                    error_log("Error inserting movie $api_id: " . var_export($e, true));
                 }
             }
             flash("$inserted movies added", "success");
@@ -108,4 +108,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // runs only on form submit
 }
 ?>
 
-<?php require(__DIR__ . "/../../partials/flash.php");
+<?php require(__DIR__ . "/../../partials/flash.php"); ?>
