@@ -4,38 +4,17 @@
 require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 
-$ini = @parse_ini_file(__DIR__ . "/../../lib/.env");
-// $apiKey = $ini["MOVIES_API_KEY"] ?? ""; 
+$url = "https://moviesdatabase.p.rapidapi.com/titles";
+$data = ["list" => "top_rated_english_250", "limit" => 5];
 
-if ($ini && isset($ini["MOVIES_API_KEY"])) {
-    $apiKey = $ini["MOVIES_API_KEY"];
-} else {
-    $apiKey = getenv("MOVIES_API_KEY");
-}
-
-$url = "https://moviesdatabase.p.rapidapi.com/titles?list=top_rated_english_250&limit=5";
-
-$curl = curl_init();
-curl_setopt_array($curl, [
-    CURLOPT_URL => $url,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER => [
-        "x-rapidapi-host: moviesdatabase.p.rapidapi.com",
-        "x-rapidapi-key: $apiKey"
-    ]
-]);
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-if ($err) {
-    echo "cURL Error: " . $err;
-} else {
-    $data = json_decode($response, true);
+try {
+    $result = get($url, "MOVIES_API_KEY", $data, true, "moviesdatabase.p.rapidapi.com");
+    $data = json_decode($result["response"], true);
     echo "<pre>";
     print_r($data);
     echo "</pre>";
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
 }
-
 ?>
 <?php require(__DIR__ . "/../../partials/flash.php"); ?>
