@@ -9,7 +9,7 @@
 require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true); 
 ?>
-
+<!-- kc784 | 4/17 -->
 <h3>Add Movie</h3>  <!-- movie form --> 
 <form onsubmit="return validate(this)" method="POST"> <!-- js validation before submission --> 
     <div>
