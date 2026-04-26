@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // kc784 | 4/19
 // delete page to remove movie from db
 // fetch movie by id, check perms, delete, redirect
@@ -35,6 +36,7 @@ try {
     error_log("Delete movie error: " . var_export($e, true)); // logs technical error message
 }
 
+// kc784 | 4/19
 // redirect to list
 $redirect = "list_movies.php";
 if (isset($_GET["title"]) || isset($_GET["title_type"]) || isset($_GET["sort"]) || isset($_GET["order"]) || isset($_GET["limit"])) {
