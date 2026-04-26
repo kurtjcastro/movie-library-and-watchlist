@@ -69,6 +69,7 @@ is_logged_in(true);
 if ($order !== "ASC" && $order !== "DESC") {
     $order = "ASC";
 }
+// kc784 | 4/19
 // ensure limit is in range
 if ($limit < 1 || $limit > 100) {
     $limit = 10;
@@ -109,6 +110,7 @@ foreach ($params as $key => $value) {
     }
 }
 
+// kc784 | 4/19
 $stmt->execute();
 $results = $stmt->fetchAll();
 ?> 
@@ -136,7 +138,7 @@ $results = $stmt->fetchAll();
                     <td>
                         <a href="view_movie.php?id=<?php se($row, 'id'); ?>">View</a> |
                         <a href="edit_movie.php?id=<?php se($row, 'id'); ?>">Edit</a> |
-                        <a href="delete_movie.php?id=<?php se($row, 'id'); ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a href="delete_movie.php?id=<?php se($row, 'id'); ?>&<?php echo http_build_query($_GET); ?>" onclick="return confirm('Are you sure?')">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

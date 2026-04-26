@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") { // runs only on form submit
             $db = getDB();
             $inserted = 0; // counts added movies
 
+            // kc784 | 4/19
             foreach ($response["results"] as $movie) {
                 // grab the fields from API response
                 $api_id = isset($movie["id"]) ? $movie["id"] : null;

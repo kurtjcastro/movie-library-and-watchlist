@@ -85,9 +85,28 @@ form,h3 {
     margin-left: auto;
     margin-right: auto;
 }
+
 table{
     margin-left: auto;
     margin-right: auto;
+    border-collapse: collapse;
+    width: 90%;
+    margin-top: 15px;
+}
+th, td {
+    border: 1px solid #ffffff;
+    padding: 8px 12px;
+    text-align: left;
+}
+th {
+    background-color: #353956;
+    color: #5875F2;
+}
+td a {
+    color: #ffffff
+}
+td a:hover {
+    color: #353956
 }
 
 body {

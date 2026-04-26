@@ -9,6 +9,7 @@
 require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 
+// kc784 | 4/19
 $id = se($_GET, "id", -1, false); // get id from url
 
 if ($id < 1) { // check if valid id
@@ -27,6 +28,8 @@ if (!$movie) { // if movie not found
     header("Location: list_movies.php");
     die();
 }
+
+// kc784 | 4/19
 // uses POST data if a form was submitted or existing data for prefill
 $title = se($_POST, "title", $movie["title"], false);
 $release_year = se($_POST, "release_year", $movie["release_year"], false);
@@ -132,6 +135,7 @@ if (isset($_POST["title"])) {
             $hasError = true;
         }
 
+        // kc784 | 4/19
         if (!$hasError) { // only updates if all has been validated 
             $stmt = $db->prepare( // prepares updates statement 
                 "UPDATE Movies SET title = :title, release_year = :release_year, image_url = :image_url, title_type = :title_type WHERE id = :id"
