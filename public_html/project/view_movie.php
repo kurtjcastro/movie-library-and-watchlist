@@ -8,6 +8,7 @@
 require(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 
+// kc784 | 4/19
 $id = se($_GET, "id", -1, false); // grab id from url or default -1
 
 if ($id < 1) { // check id validity
@@ -27,6 +28,7 @@ if (!$movie) { // if movie not found
 }
 ?>
 
+<!-- kc784 | 4/19 -->
 <h3><?php se($movie, 'title'); ?></h3> <!-- title as heading -->
 
 <div>

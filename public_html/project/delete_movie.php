@@ -36,6 +36,18 @@ try {
 }
 
 // redirect to list
-header("Location: list_movies.php");
+$redirect = "list_movies.php";
+if (isset($_GET["title"]) || isset($_GET["title_type"]) || isset($_GET["sort"]) || isset($_GET["order"]) || isset($_GET["limit"])) {
+    $params = [];
+    foreach(["title", "title_type", "sort", "order", "limit"] as $key) {
+        if (isset($_GET[$key]) && $_GET[$key] !== "") {
+            $params[$key] = $_GET[$key];
+        }
+    }
+    if (!empty($params)) {
+        $redirect .= "?" . http_build_query($params);
+    }
+}
+header("Location: $redirect");
 die();
 ?>
