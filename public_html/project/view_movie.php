@@ -44,6 +44,12 @@ if (!$movie) { // if movie not found
     <?php endif; ?>
 </div>
 
+<?php
+// kc784 | 5/2
+// check if user has movie in list
+
+<?php endif; ?>
+
 <div>
     <!-- links -->
      <a href="edit_movie.php?id=<?php se($movie, 'id'); ?>">Edit</a> |
