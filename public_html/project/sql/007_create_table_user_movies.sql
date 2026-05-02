@@ -9,7 +9,5 @@ CREATE TABLE IF NOT EXISTS UserMovies (
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    UNIQUE_KEY (user_id, movie_id),
-    FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (movie_id) REFERENCES Movies(id)
+    UNIQUE_KEY user_movie (user_id, movie_id),
 );
