@@ -30,6 +30,10 @@ require(__DIR__."/../lib/functions.php");
         <?php if (is_logged_in()) : ?>
             <li><a href="<?php get_url('landing.php', true);?>">Landing</a></li>
             <li><a href="<?php get_url('profile.php', true);?>">Profile</a></li>
+            <li><a href="<?php get_url('list_movies.php', true);?>">Movies</a></li>
+            <li><a href="<?php get_url('create_movie.php', true);?>">Add Movie</a></li>
+            <li><a href="<?php get_url('fetch_movies.php', true);?>">Fetch Movies</a></li>
+            <li><a href="<?php get_url('my_movies.php', true);?>">My Movies</a></li>
         <?php endif; ?>
         <?php if (!is_logged_in()) : ?>
             <li><a href="<?php get_url('login.php', true);?>">Login</a></li>
@@ -39,6 +43,9 @@ require(__DIR__."/../lib/functions.php");
             <li><a href="<?php get_url('admin/create_role.php', true); ?>">Create Role</a></li>
             <li><a href="<?php get_url('admin/list_roles.php', true); ?>">List Roles</a></li>
             <li><a href="<?php get_url('admin/assign_roles.php', true); ?>">Assign Roles</a></li>
+            <li><a href="<?php get_url('admin/all_associations.php', true); ?>">All Associations</a></li>
+            <li><a href="<?php get_url('admin/unassociated_movies.php', true); ?>">Unassociated</a></li>
+            <li><a href="<?php get_url('admin/assign_movies.php', true); ?>">Assign Movies</a></li>
         <?php endif; ?>
         <?php if (is_logged_in()) : ?>
             <li><a href="<?php get_url('logout.php', true);?>">Logout</a></li>
