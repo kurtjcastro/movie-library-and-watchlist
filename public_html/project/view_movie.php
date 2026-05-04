@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // kc784 | 4/19 
 // detail page for viewing details of a movie
 // fetch movie by id + display details
