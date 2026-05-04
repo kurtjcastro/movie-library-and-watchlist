@@ -1,6 +1,6 @@
 ## Project Name: Movie API Project
 ### Project Summary: This project will primarily use data pull from an API to do something
-### Github Link: https://github.com/kurtjcastro/kc784-it202-008-2026
+### Github Link: https://github.com/kurtjcastro/kc784-it202-008-2026/tree/prod/public_html/project
 ### Website Link: https://kc784-it202-008-prod.onrender.com/project/register.php
 ### API Link: https://rapidapi.com/SAdrian/api/MoviesDatabase
 ### Your Name: Kurt Castro
