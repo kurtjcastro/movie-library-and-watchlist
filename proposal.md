@@ -1,5 +1,5 @@
 ## Project Name: Movie API Project
-### Project Summary: This project will primarily use data pull from an API to do something
+### Project Summary: This project primarily used data pulled from the MoviesDatabase API on RapidAPI for a movie database application. Users can register, log in, browse and search movies, manually add their own entries, and save movies to a personal watchlist. The app features three layers of validation, API integration with duplicate movie entry handling, and a role-based system where admins can manage user-movie associations and view unassociated records.
 ### Github Link: https://github.com/kurtjcastro/kc784-it202-008-2026/tree/prod/public_html/project
 ### Website Link: https://kc784-it202-008-prod.onrender.com/project/register.php
 ### API Link: https://rapidapi.com/SAdrian/api/MoviesDatabase
